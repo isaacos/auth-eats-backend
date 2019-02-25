@@ -17,6 +17,13 @@ class Api::V1::UsersController < ApplicationController
     render json: @user
   end
 
+  def login
+    @user = User.where("lower(email) = ?", params[:email].downcase).first
+    if @user[:password] == params[:password]
+      render json: @user
+    end
+  end
+
 
   private
 

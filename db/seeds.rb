@@ -19,7 +19,8 @@ def dataSeeder(search_term)
     phone = restaurant['phone']
     lat = restaurant['coordinates']['latitude']
     lng = restaurant['coordinates']['longitude']
-    Restaurant.create(name: name, location: location, category: category, url: url, image_url: image_url, phone: phone, lat:lat, lng:lng)
+    slug = restaurant['alias']
+    Restaurant.create(name: name, location: location, category: category, url: url, image_url: image_url, phone: phone, lat:lat, lng:lng, slug: slug)
   end
 end
 
