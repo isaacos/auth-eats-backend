@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :restaurants
       resources :users
       resources :reviews
+      resources :categories
+      resources :category_users
       post '/login', to: 'users#login'
     end
   end
