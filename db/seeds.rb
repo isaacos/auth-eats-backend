@@ -15,12 +15,22 @@ def dataSeeder(search_term)
     image_url = restaurant['image_url']
     location = restaurant['location']['address1']
     category = restaurant['categories'][-1]['alias']
+    category_list = []
+    restaurant['categories'].each do |category|
+      new_category = Category.find_or_create_by(name: category['alias'])
+      category_list.push(new_category)
+
+    end
+
     name = restaurant['name']
     phone = restaurant['phone']
     lat = restaurant['coordinates']['latitude']
     lng = restaurant['coordinates']['longitude']
     slug = restaurant['alias']
-    Restaurant.create(name: name, location: location, category: category, url: url, image_url: image_url, phone: phone, lat:lat, lng:lng, slug: slug)
+    new_restaurant = Restaurant.create(name: name, location: location, category: category, url: url, image_url: image_url, phone: phone, lat:lat, lng:lng, slug: slug)
+    category_list.each do |category|
+      CategoryRestaurant.create(category_id: category.id, restaurant_id: new_restaurant.id)
+    end
   end
 end
 
