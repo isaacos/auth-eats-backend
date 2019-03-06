@@ -26,6 +26,9 @@ class Api::V1::UsersController < ApplicationController
     @user = User.where("lower(email) = ?", params[:email].downcase).first
     if @user[:password] == params[:password]
       render json: @user
+    else
+      @user = {error: "oh no an error"}
+      render json: {error: "oh no an error"}
     end
   end
 
