@@ -49,3 +49,5 @@ gem 'active_model_serializers'
 
 gem 'rest-client'
 gem 'http'
+
+gem "rails-perftest", "~> 0.0.7"
