@@ -2,8 +2,8 @@ class Api::V1::UsersController < ApplicationController
 
 
   def index
-    @users = User.includes(:category_users).all
-    render json: @users, :includes => :category_users
+    @users = User.includes(:category_user).all
+    render json: @users, :includes => :category_user
   end
 
   def create
