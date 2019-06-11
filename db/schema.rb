@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_200635) do
+ActiveRecord::Schema.define(version: 2019_06_10_172402) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_200635) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.boolean "permission"
+    t.index ["category_id", "user_id"], name: "index_category_users_on_category_id_and_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
